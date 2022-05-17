@@ -1,19 +1,14 @@
 import { Category } from '../model/Category';
+import { ICategoriesRepository, ICreateCategoryDTO } from './ICategoriesRepository';
 
-// DTO => Data transfer object
-interface ICreateCategoryDTO {
-  name: string;
-  description: string;
-}
-
-class CategoriesRepository {
+class CategoriesRepository implements ICategoriesRepository {
   private categories: Category[];
 
   constructor() {
     this.categories = [];
   }
 
-  async create({ name, description }: ICreateCategoryDTO) {
+  create({ name, description }: ICreateCategoryDTO): void {
     const category = new Category();
 
     Object.assign(category, {
@@ -25,7 +20,7 @@ class CategoriesRepository {
     this.categories.push(category);
   }
 
-  async list(): Promise<Category[]> {
+  list(): Category[] {
     return this.categories;
   }
 
