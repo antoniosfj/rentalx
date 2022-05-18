@@ -1,24 +1,12 @@
 import { Router } from 'express';
 
-import { CategoriesRepository } from '../modules/cars/repositories/CategoriesRepository';
-import { CreateCategoryService } from '../modules/cars/services/CreateCategoryService';
+import { createCategoryController } from '../modules/cars/useCases/createCategory';
+import { listCategoriesController } from '../modules/cars/useCases/listCategories';
 
 const categoriesRoutes = Router();
-const categoryRepository = new CategoriesRepository();
 
-categoriesRoutes.post('/', (request, response) => {
-  const { name, description } = request.body;
+categoriesRoutes.post('/', (request, response) => createCategoryController.handle(request, response));
 
-  const createCategoriesService = new CreateCategoryService(categoryRepository);
-
-  createCategoriesService.execute({ name, description });
-
-  return response.status(201).send();
-});
-
-categoriesRoutes.get('/', async (request, response) => {
-  const categories = await categoryRepository.list();
-  response.json(categories);
-});
+categoriesRoutes.get('/', async (request, response) => listCategoriesController.handle(request, response));
 
 export { categoriesRoutes };
