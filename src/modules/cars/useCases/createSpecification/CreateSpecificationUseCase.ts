@@ -1,8 +1,13 @@
-import { SpecificationsRepository } from '../../repositories/implementations/SpecificationsRepository';
-import { ICreateSpecificationDTO } from '../../repositories/ISpecificationRepository';
+import { inject, injectable } from 'tsyringe';
 
+import { ICreateSpecificationDTO, ISpecificationRepository } from '../../repositories/ISpecificationRepository';
+
+@injectable()
 class CreateSpecificationUseCase {
-  constructor(private specificationsRepository: SpecificationsRepository) { }
+  constructor(
+    @inject('SpecificationsRepository')
+    private specificationsRepository: ISpecificationRepository,
+  ) { }
 
   execute({ name, description }: ICreateSpecificationDTO) {
     this.specificationsRepository.create({ name, description });
