@@ -2,6 +2,7 @@ import 'reflect-metadata';
 import { DataSource } from 'typeorm';
 
 import { Category } from '../modules/cars/entities/Category';
+import { Specification } from '../modules/cars/entities/Specification';
 // With the newer version you can't pass cli.migrationsDir so it needs to define the directory
 // manually when runnnig migration:create. It seems that the newer versions of
 // typeORM are very broken
@@ -9,14 +10,14 @@ import { Category } from '../modules/cars/entities/Category';
 
 const dataSource = new DataSource({
   type: 'postgres',
-  host: 'database',
+  host: 'database', // localhost when migratins and database when using on docker
   port: 5432,
   username: 'docker',
   password: 'ignite',
   database: 'rentalx',
   synchronize: false,
   logging: false,
-  entities: [Category],
+  entities: [Category, Specification],
   migrations: ['./src/database/migrations/*.ts'],
   subscribers: [],
 });
