@@ -6,7 +6,7 @@ import { IUsersRepository } from '../../repositories/IUsersRepository';
 
 interface IRequest {
   user_id: string;
-  avatar_file: string|null;
+  avatar_file: string|null|undefined;
 }
 
 @injectable()
@@ -22,7 +22,7 @@ class UpdateUserAvatarUseCase {
     // if (!user) {
     //   throw new AppError('User does not exists.', 404);
     // }
-    user.avatar = avatar_file;
+    user.avatar = avatar_file as string;
 
     await this.usersRepository.create(user);
   }
