@@ -11,7 +11,7 @@ import { Specification } from '@modules/cars/infra/typeorm/entities/Specificatio
 
 const dataSource = new DataSource({
   type: 'postgres',
-  host: 'localhost', // localhost when migratins and database when using on docker
+  host: 'database', // localhost when migratins and database when using on docker
   port: 5432,
   username: 'docker',
   password: 'ignite',
