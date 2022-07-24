@@ -5,7 +5,7 @@ interface ICarsRepository {
 
   create(data: ICreateCarDTO): Promise<Car>;
 
-  findByLicensePlate(license_plate: string): Promise<Car|undefined>;
+  findByLicensePlate(license_plate: string): Promise<Car | undefined | null>;
 }
 
 export { ICarsRepository };

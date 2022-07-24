@@ -2,6 +2,7 @@ import 'reflect-metadata';
 import { DataSource } from 'typeorm';
 
 import { User } from '@modules/accounts/infra/typeorm/entities/User';
+import { Car } from '@modules/cars/infra/typeorm/entities/Car';
 import { Category } from '@modules/cars/infra/typeorm/entities/Category';
 import { Specification } from '@modules/cars/infra/typeorm/entities/Specification';
 // With the newer version you can't pass cli.migrationsDir so it needs to define the directory
@@ -18,7 +19,7 @@ const dataSource = new DataSource({
   database: 'rentalx',
   synchronize: false,
   logging: false,
-  entities: [Category, Specification, User],
+  entities: [Category, Specification, User, Car],
   migrations: ['./src/shared/infra/typeorm/migrations/*.ts'],
   subscribers: [],
 });
