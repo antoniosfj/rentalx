@@ -7,11 +7,11 @@ import { Specification } from '@modules/cars/infra/typeorm/entities/Specificatio
 // With the newer version you can't pass cli.migrationsDir so it needs to define the directory
 // manually when runnnig migration:create. It seems that the newer versions of
 // typeORM are very broken
-// yarn typeorm migration:create src/database/migrations/CreateCategories
+// yarn typeorm migration:create src/shared/infra/typeorm/migrations/CreateCategories
 
 const dataSource = new DataSource({
   type: 'postgres',
-  host: 'database', // localhost when migratins and database when using on docker
+  host: 'localhost', // localhost when migratins and database when using on docker
   port: 5432,
   username: 'docker',
   password: 'ignite',
@@ -19,7 +19,7 @@ const dataSource = new DataSource({
   synchronize: false,
   logging: false,
   entities: [Category, Specification, User],
-  migrations: ['./src/database/migrations/*.ts'],
+  migrations: ['./src/shared/infra/typeorm/migrations/*.ts'],
   subscribers: [],
 });
 
