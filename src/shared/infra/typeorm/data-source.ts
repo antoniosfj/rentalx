@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { DataSource } from 'typeorm';
+import { DataSource, getConnectionOptions } from 'typeorm';
 
 import { User } from '@modules/accounts/infra/typeorm/entities/User';
 import { Car } from '@modules/cars/infra/typeorm/entities/Car';
@@ -10,24 +10,20 @@ import { Specification } from '@modules/cars/infra/typeorm/entities/Specificatio
 // typeORM are very broken
 // yarn typeorm migration:create src/shared/infra/typeorm/migrations/CreateCategories
 
-const dataSource = new DataSource({
-  type: 'postgres',
-  host: 'database', // localhost when migratins and database when using on docker
-  port: 5432,
-  username: 'docker',
-  password: 'ignite',
-  database: 'rentalx',
-  synchronize: false,
-  logging: false,
-  entities: [Category, Specification, User, Car],
-  migrations: ['./src/shared/infra/typeorm/migrations/*.ts'],
-  subscribers: [],
-});
+export default (host = 'database'): DataSource => {
+  const dataSource = new DataSource({
+    type: 'postgres',
+    host, // localhost when migratins and database when using on docker
+    port: 5432,
+    username: 'docker',
+    password: 'ignite',
+    database: 'rentalx',
+    synchronize: false,
+    logging: false,
+    entities: [Category, Specification, User, Car],
+    migrations: ['./src/shared/infra/typeorm/migrations/*.ts'],
+    subscribers: [],
+  });
 
-dataSource.initialize().then(() => {
-  console.log('Data Source has been initialized!');
-}).catch((err) => {
-  console.error('Error during Data Source initialization', err);
-});
-
-export default dataSource;
+  return dataSource;
+};

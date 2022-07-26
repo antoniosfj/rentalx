@@ -18,6 +18,9 @@ class User {
     email: string;
 
   @Column()
+    is_admin: boolean;
+
+  @Column()
     driver_license: string;
 
   @Column()

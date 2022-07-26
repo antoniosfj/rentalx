@@ -2,7 +2,9 @@ import { Repository } from 'typeorm';
 
 import { ICreateUserDTO } from '@modules/accounts/dtos/ICreateUserDTO';
 import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
-import dataSource from '@shared/infra/typeorm/data-source';
+import dataSource from '@shared/infra/typeorm/index';
+
+import 'reflect-metadata';
 
 import { User } from '../entities/User';
 
@@ -10,7 +12,7 @@ class UsersRepository implements IUsersRepository {
   private repository: Repository<User>;
 
   constructor() {
-    this.repository = dataSource.getRepository('users');
+    this.repository = dataSource.getRepository(User);
   }
 
   async create({
