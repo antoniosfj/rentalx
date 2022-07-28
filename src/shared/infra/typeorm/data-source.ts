@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { DataSource, getConnectionOptions } from 'typeorm';
+import { DataSource } from 'typeorm';
 
 import { User } from '@modules/accounts/infra/typeorm/entities/User';
 import { Car } from '@modules/cars/infra/typeorm/entities/Car';
