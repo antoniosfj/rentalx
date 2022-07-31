@@ -2,7 +2,7 @@ import DataSourceConnection from '@shared/infra/typeorm/data-source';
 
 const dataSource = DataSourceConnection();
 
-if (process.argv.some((arg) => arg === 'migration:run')) {
+if (process.argv.some((arg) => arg.includes('migration:'))) {
   dataSource.setOptions({ host: 'localhost' });
 } else {
   dataSource.initialize().then(() => {
