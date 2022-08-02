@@ -58,14 +58,21 @@ class CarsRepository implements ICarsRepository {
       carsQuery.andWhere('category_id = :category_id', { category_id });
     }
 
-    carsQuery.leftJoinAndSelect('c.specifications', 'specification');
+    // carsQuery.leftJoinAndSelect('c.specifications', 'specification');
+    // carsQuery.leftJoinAndSelect('c.images', 'ci');
     const cars = await carsQuery.getMany();
 
     return cars;
   }
 
   async findById(id: string): Promise<Car | null | undefined> {
-    const car = await this.repository.findOneBy({ id });
+    const car = await this.repository.findOne({
+      relations: {
+        images: true,
+        specifications: true,
+      },
+      where: { id },
+    });
 
     return car;
   }
