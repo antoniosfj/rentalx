@@ -6,6 +6,7 @@ import { Car } from '@modules/cars/infra/typeorm/entities/Car';
 import { CarImage } from '@modules/cars/infra/typeorm/entities/CarImage';
 import { Category } from '@modules/cars/infra/typeorm/entities/Category';
 import { Specification } from '@modules/cars/infra/typeorm/entities/Specification';
+import { Rental } from '@modules/rentals/infra/typeorm/entities/Rental';
 // With the newer version you can't pass cli.migrationsDir so it needs to define the directory
 // manually when runnnig migration:create. It seems that the newer versions of
 // typeORM are very broken
@@ -21,7 +22,7 @@ export default (host = 'database'): DataSource => {
     database: 'rentalx',
     synchronize: false,
     logging: false,
-    entities: [Category, Specification, User, Car, CarImage],
+    entities: [Category, Specification, User, Car, CarImage, Rental],
     migrations: ['./src/shared/infra/typeorm/migrations/*.ts'],
     subscribers: [],
   });

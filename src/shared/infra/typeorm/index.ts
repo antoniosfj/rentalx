@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import DataSourceConnection from '@shared/infra/typeorm/data-source';
 
 const dataSource = DataSourceConnection();

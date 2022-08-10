@@ -51,6 +51,7 @@ O usuário responsável pelo cadastro deve ser um usuário administrador.
 Deve ser possível cadastrar um aluguel.
 
 **RN**
+O usuario deve estar logado.
 O aluguel deve ter duração miníma de 24 horas.
 Não deve ser possível cadastrar um novo aluguel caso já exista um aberto para o mesmo usuário.
 Não deve ser possível cadastrar um novo aluguel caso já exista um aberto para o mesmo carro.

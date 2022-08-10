@@ -4,8 +4,6 @@ import { ICreateUserDTO } from '@modules/accounts/dtos/ICreateUserDTO';
 import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
 import dataSource from '@shared/infra/typeorm/index';
 
-import 'reflect-metadata';
-
 import { User } from '../entities/User';
 
 class UsersRepository implements IUsersRepository {
