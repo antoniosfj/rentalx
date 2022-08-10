@@ -7,7 +7,7 @@
     "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
     "typeorm": "node -r tsconfig-paths/register --require ts-node/register ./node_modules/typeorm/cli.js",
     "seed:admin": "ts-node-dev -r tsconfig-paths/register src/shared/infra/typeorm/seed/admin.ts",
-    "test": "jest"
+    "test": "NODE_ENV=test jest"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
@@ -22,7 +22,8 @@
     "swagger-ui-express": "^4.4.0",
     "tsyringe": "^4.7.0",
     "typeorm": "^0.3.6",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "@types/supertest": "^2.0.12"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
@@ -43,6 +44,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "jest": "^28.1.2",
     "prettier": "^2.6.2",
+    "supertest": "^6.2.4",
     "ts-jest": "^28.0.5",
     "ts-node-dev": "^1.1.8",
     "tsconfig-paths": "^4.0.0",
