@@ -5,6 +5,7 @@ interface IRentalsRepository {
   findOpenRentalByCarId(car_id: string): Promise<Rental | undefined | null>;
   findOpenRentalByUserId(user_id: string): Promise<Rental | undefined | null>;
   findById(id: string) : Promise<Rental | undefined | null>;
+  findByUserId(user_id: string) : Promise<Rental[] | undefined | null>;
   create({
     user_id,
     car_id,

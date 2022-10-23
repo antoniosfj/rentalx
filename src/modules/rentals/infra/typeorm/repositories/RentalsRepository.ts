@@ -39,6 +39,13 @@ class RentalsRepository implements IRentalsRepository {
   findById(id: string): Promise<Rental | null | undefined> {
     return this.repository.findOneBy({ id });
   }
+
+  findByUserId(user_id: string): Promise<Rental[] | null | undefined> {
+    return this.repository.find({
+      where: { user_id },
+      relations: ['car'],
+    });
+  }
 }
 
 export { RentalsRepository };
