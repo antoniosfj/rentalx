@@ -8,4 +8,4 @@ dataSource.initialize().then(() => {
   console.error('Error during Data Source initialization', err);
 });
 
-app.listen(3333, () => console.log('Server is running!'));
+app.listen(3333, '0.0.0.0', () => console.log('Server is running!'));
