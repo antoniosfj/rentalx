@@ -34,6 +34,10 @@ class AuthenticateUserUseCase {
   ) { }
 
   async execute({ email, password }: IRequest): Promise<IResponse> {
+    if (!email || !password) {
+      throw new AppError('Email or password are missing.');
+    }
+
     const user = await this.usersRepository.findByEmail(email);
     const {
       expires_in_token,

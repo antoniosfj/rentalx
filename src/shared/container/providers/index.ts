@@ -10,7 +10,9 @@ container.registerSingleton<IDateProvider>(
   DayjsDateProvider,
 );
 
-container.registerSingleton<IMailProvider>(
+container.registerInstance<IMailProvider>(
   'NodeMailerMailProvider',
-  NodeMailerMailProvider,
+  new NodeMailerMailProvider(),
+  // Cause constructors doesnt support await,
+  // we need to have "client" defined before we call "sendMail"
 );

@@ -30,19 +30,19 @@ describe('Create Category Controller', () => {
 
   it('should be able to list all categories', async () => {
     const responseToken = await request(app).post('/session').send({
-      username: 'admin@rentalx.com.br',
+      email: 'admin@rentalx.com.br',
       password: 'admin',
     });
-    const { token } = responseToken.body;
+    const { refresh_token } = responseToken.body;
     await request(app).post('/categories').send({
       name: 'Category name',
       description: 'Category description',
     }).set({
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${refresh_token}`,
     });
 
     const response = await request(app).get('/categories').set({
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${refresh_token}`,
     });
     expect(response.status).toBe(200);
     expect(response.body.length).toBe(1);

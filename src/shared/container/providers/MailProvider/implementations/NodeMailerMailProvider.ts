@@ -23,7 +23,7 @@ class NodeMailerMailProvider implements IMailProvider {
     }).catch((err) => console.error(err));
   }
 
-  async sendMail(to: string, subject: string, variables: any, path: string): Promise<void> {
+  async sendMail(to: string, subject: string, variables: object, path: string): Promise<void> {
     const templateFileContent = fs.readFileSync(path).toString('utf-8');
 
     const templateParse = handlebars.compile(templateFileContent);
