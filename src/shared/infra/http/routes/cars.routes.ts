@@ -19,7 +19,7 @@ const detailCarUseCase = new DetailCarController();
 
 const carsRoutes = Router();
 
-const uploadCarImages = multer(uploadConfig.upload('./temp/cars'));
+const uploadCarImages = multer(uploadConfig);
 
 carsRoutes.get('/:id/detail', detailCarUseCase.handle);
 carsRoutes.post('/', ensureAuthenticated, ensureAdmin, createCarController.handle);
