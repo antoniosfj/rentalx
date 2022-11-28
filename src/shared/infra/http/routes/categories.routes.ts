@@ -11,7 +11,7 @@ import { ensureAdmin } from '../middlewares/ensureAdmin';
 const categoriesRoutes = Router();
 
 const upload = multer({
-  dest: './temp',
+  dest: './tmp',
 });
 
 const createCategoryController = new CreateCategoryController();
