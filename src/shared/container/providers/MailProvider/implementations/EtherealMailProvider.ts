@@ -4,7 +4,7 @@ import nodemailer, { Transporter } from 'nodemailer';
 
 import { IMailProvider } from '../IMailProvider';
 
-class NodeMailerMailProvider implements IMailProvider {
+class EtherealMailProvider implements IMailProvider {
   private client: Transporter;
 
   constructor() {
@@ -43,4 +43,4 @@ class NodeMailerMailProvider implements IMailProvider {
   }
 }
 
-export { NodeMailerMailProvider };
+export { EtherealMailProvider };
