@@ -132,3 +132,7 @@ dist
 temp/*
 
 tmp/*
+
+!tmp/.gitkeep
+
+.vscode
