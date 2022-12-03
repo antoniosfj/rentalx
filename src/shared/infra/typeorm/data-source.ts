@@ -13,10 +13,10 @@ import { Rental } from '@modules/rentals/infra/typeorm/entities/Rental';
 // typeORM are very broken
 // yarn typeorm migration:create src/shared/infra/typeorm/migrations/CreateCategories
 
-export default (host = 'database'): DataSource => {
+export default (): DataSource => {
   const dataSource = new DataSource({
     type: 'postgres',
-    host, // localhost when migratins and database when using on docker
+    host: 'localhost', // localhost when migratins and database when using on docker
     port: 5432,
     username: 'docker',
     password: 'ignite',
